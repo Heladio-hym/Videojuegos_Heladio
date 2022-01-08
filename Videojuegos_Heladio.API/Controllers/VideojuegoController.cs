@@ -37,8 +37,8 @@ namespace Videojuegos_Heladio.API.Controllers
 
             var modificar = _bd.Videojuego.Find(id);
             modificar.Nombre = obj.Nombre;
-            modificar.Disponible = obj.Disponible;
             modificar.Precio = obj.Precio;
+            modificar.Disponible = obj.Disponible;
             _bd.Videojuego.Update(modificar);
             _bd.SaveChanges();
             return Ok(modificar);
