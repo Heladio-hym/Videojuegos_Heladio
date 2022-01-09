@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Videojuegos_Heladio.API.Modelos;
 
 namespace Videojuegos_Heladio.API.Modelos
 {

@@ -2,7 +2,7 @@
 
 namespace Videojuegos_Heladio.API.Migrations
 {
-    public partial class TablaColor : Migration
+    public partial class TablaPlataforma : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

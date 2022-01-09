@@ -20,6 +20,15 @@ namespace Videojuegos_Heladio.API.Controllers
         {
             _bd = contexto;
         }
+
+        [HttpGet]
+        public IActionResult Listar()
+        {
+            var lista = _bd.Plataforma.ToList();
+
+            return Ok(lista);
+        }
+
         [HttpGet]
         [Route("{id}")]
         public IActionResult Buscar(int id)
@@ -31,6 +40,7 @@ namespace Videojuegos_Heladio.API.Controllers
 
             return Ok(obj);
         }
+
         [HttpPost]
         public IActionResult Guardar(PlataformaDTO obj)
         {
@@ -39,9 +49,10 @@ namespace Videojuegos_Heladio.API.Controllers
             _bd.SaveChanges();
             return Ok(nuevo);
         }
+
         [HttpPut]
-        [Route("{id}")]
-        public IActionResult Modificar(int id, Plataforma obj)
+        [Route("{id}/CambiarPlataforma")]
+        public IActionResult Modificar(int id, PlataformaDTO obj)
         {
 
             var modificar = _bd.Plataforma.Find(id);

@@ -10,8 +10,8 @@ using Videojuegos_Heladio.API.Modelos;
 namespace Videojuegos_Heladio.API.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220108215409_TablaColor")]
-    partial class TablaColor
+    [Migration("20220108232241_TablaPlataforma")]
+    partial class TablaPlataforma
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
