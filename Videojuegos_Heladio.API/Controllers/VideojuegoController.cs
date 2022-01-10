@@ -81,7 +81,6 @@ namespace Videojuegos_Heladio.API.Controllers
             modificar.Disponible = !modificar.Disponible;
 
             _bd.Entry(modificar).State = EntityState.Modified;
-            //            _db.Color.Add(modificar);
             _bd.SaveChanges();
 
             return Ok(modificar);

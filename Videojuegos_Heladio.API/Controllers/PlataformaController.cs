@@ -80,7 +80,7 @@ namespace Videojuegos_Heladio.API.Controllers
             modificar.Activo = !modificar.Activo;
 
             _bd.Entry(modificar).State = EntityState.Modified;
-            //            _db.Color.Add(modificar);
+
             _bd.SaveChanges();
 
             return Ok(modificar);
