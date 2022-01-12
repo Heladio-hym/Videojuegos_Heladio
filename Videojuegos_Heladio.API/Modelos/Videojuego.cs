@@ -8,6 +8,7 @@ using Videojuegos_Heladio.API.DTOS;
 
 namespace Videojuegos_Heladio.API.Modelos
 {
+    [Table("Videojuego")]
     public class Videojuego
     {
 
@@ -18,9 +19,12 @@ namespace Videojuegos_Heladio.API.Modelos
 
         public Videojuego(VideojuegoDTO nuevo)
         {
-            this.Nombre = nuevo.Nombre;
-            this.Precio = nuevo.Precio;
-            this.Disponible = true;
+            Nombre = nuevo.Nombre;
+            Precio = nuevo.Precio;
+            Disponible = true;
+            IdPlataforma = nuevo.IdPlataforma;
+
+
         }
 
         [Key]
@@ -35,6 +39,9 @@ namespace Videojuegos_Heladio.API.Modelos
 
         [Required]
         public bool Disponible { get; set; }
+
+        [Required]
+        public int IdPlataforma { get; set; }
 
 
         [ForeignKey("IdPlataforma")]

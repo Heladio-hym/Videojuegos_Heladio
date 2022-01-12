@@ -9,8 +9,8 @@ using Videojuegos_Heladio.API.Modelos;
 namespace Videojuegos_Heladio.API.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220108200913_Cliente")]
-    partial class Cliente
+    [Migration("20220112000003_Plataforma")]
+    partial class Plataforma
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,6 +49,26 @@ namespace Videojuegos_Heladio.API.Migrations
                     b.ToTable("Cliente");
                 });
 
+            modelBuilder.Entity("Videojuegos_Heladio.API.Modelos.Plataforma", b =>
+                {
+                    b.Property<int>("IdPlataforma")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("IdPlataforma");
+
+                    b.ToTable("Plataforma");
+                });
+
             modelBuilder.Entity("Videojuegos_Heladio.API.Modelos.Videojuego", b =>
                 {
                     b.Property<int>("IdVideojuego")
@@ -58,6 +78,9 @@ namespace Videojuegos_Heladio.API.Migrations
 
                     b.Property<bool>("Disponible")
                         .HasColumnType("bit");
+
+                    b.Property<int>("IdPlataforma")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -69,7 +92,25 @@ namespace Videojuegos_Heladio.API.Migrations
 
                     b.HasKey("IdVideojuego");
 
+                    b.HasIndex("IdPlataforma");
+
                     b.ToTable("Videojuego");
+                });
+
+            modelBuilder.Entity("Videojuegos_Heladio.API.Modelos.Videojuego", b =>
+                {
+                    b.HasOne("Videojuegos_Heladio.API.Modelos.Plataforma", "Plataforma")
+                        .WithMany("Videojuego")
+                        .HasForeignKey("IdPlataforma")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Plataforma");
+                });
+
+            modelBuilder.Entity("Videojuegos_Heladio.API.Modelos.Plataforma", b =>
+                {
+                    b.Navigation("Videojuego");
                 });
 #pragma warning restore 612, 618
         }

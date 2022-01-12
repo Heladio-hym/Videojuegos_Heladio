@@ -36,7 +36,7 @@ namespace Videojuegos_Heladio.API.Controllers
             var obj = _bd.Plataforma.Find(id);
 
             if (obj == null)
-                return NotFound();
+                return NotFound("Plataforma No encontrada");
 
             return Ok(obj);
         }

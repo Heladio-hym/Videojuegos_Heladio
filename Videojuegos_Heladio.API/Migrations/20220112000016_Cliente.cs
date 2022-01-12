@@ -2,7 +2,7 @@
 
 namespace Videojuegos_Heladio.API.Migrations
 {
-    public partial class Videojuego : Migration
+    public partial class Cliente : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

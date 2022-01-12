@@ -36,7 +36,7 @@ namespace Videojuegos_Heladio.API.Controllers
             var obj = _bd.Videojuego.Find(id);
 
             if (obj == null)
-                return NotFound();
+                return NotFound("Videojuego no encontrado");
 
             return Ok(obj);
         }
