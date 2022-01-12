@@ -49,6 +49,7 @@ namespace Videojuegos_Heladio.API.Controllers
             _bd.Venta.Add(nuevo);
             _bd.SaveChanges();
             return Ok(nuevo);
+
         }
 
         [HttpPut]
