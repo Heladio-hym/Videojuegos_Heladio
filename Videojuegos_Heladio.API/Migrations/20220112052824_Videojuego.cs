@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Videojuegos_Heladio.API.Migrations
 {
@@ -58,6 +59,43 @@ namespace Videojuegos_Heladio.API.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Venta",
+                columns: table => new
+                {
+                    IdVenta = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IdCliente = table.Column<int>(type: "int", nullable: false),
+                    IdVideojuego = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Venta", x => x.IdVenta);
+                    table.ForeignKey(
+                        name: "FK_Venta_Cliente_IdCliente",
+                        column: x => x.IdCliente,
+                        principalTable: "Cliente",
+                        principalColumn: "IdCliente",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Venta_Videojuego_IdVideojuego",
+                        column: x => x.IdVideojuego,
+                        principalTable: "Videojuego",
+                        principalColumn: "IdVideojuego",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Venta_IdCliente",
+                table: "Venta",
+                column: "IdCliente");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Venta_IdVideojuego",
+                table: "Venta",
+                column: "IdVideojuego");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Videojuego_IdPlataforma",
                 table: "Videojuego",
@@ -66,6 +104,9 @@ namespace Videojuegos_Heladio.API.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Venta");
+
             migrationBuilder.DropTable(
                 name: "Cliente");
 

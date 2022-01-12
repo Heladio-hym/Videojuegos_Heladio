@@ -20,6 +20,8 @@ namespace Videojuegos_Heladio.API.Modelos
         public DbSet<Cliente> Cliente { get; set; }
 
         public DbSet<Plataforma> Plataforma { get; set; }
+        
+        public DbSet<Venta> Venta { get; set; }
 
     }
 }

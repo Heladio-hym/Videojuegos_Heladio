@@ -47,6 +47,7 @@ namespace Videojuegos_Heladio.API.Modelos
         [ForeignKey("IdPlataforma")]
         public virtual Plataforma Plataforma { get; set; }
 
+        public virtual List<Venta> Venta { get; set; }
 
     }
 }

@@ -12,12 +12,12 @@ namespace Videojuegos_Heladio.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClienteController : ControllerBase
+    public class VentaController : ControllerBase
     {
 
         private readonly Contexto _bd;
 
-        public ClienteController(Contexto contexto)
+        public VentaController(Contexto contexto)
         {
             _bd = contexto;
         }
@@ -25,7 +25,7 @@ namespace Videojuegos_Heladio.API.Controllers
         [HttpGet]
         public IActionResult Listar()
         {
-            var lista = _bd.Cliente.ToList();
+            var lista = _bd.Venta.ToList();
 
             return Ok(lista);
         }
@@ -34,39 +34,37 @@ namespace Videojuegos_Heladio.API.Controllers
         [Route("{id}")]
         public IActionResult Buscar(int id)
         {
-            var obj = _bd.Cliente.Find(id);
+            var obj = _bd.Venta.Find(id);
 
             if (obj == null)
-                return NotFound("Cliente No encontrado");
+                return NotFound("Venta No encontrada");
 
             return Ok(obj);
         }
 
         [HttpPost]
-        public IActionResult Guardar(ClienteDTO obj)
+        public IActionResult Guardar(VentaDTO obj)
         {
-            var nuevo = new Cliente(obj);
-            _bd.Cliente.Add(nuevo);
+            var nuevo = new Venta(obj);
+            _bd.Venta.Add(nuevo);
             _bd.SaveChanges();
             return Ok(nuevo);
         }
 
         [HttpPut]
-        [Route("{id}/CambiarCliente")]
-        public IActionResult Modificar(int id, ClienteDTO obj)
+        [Route("{id}/CambiarVenta")]
+        public IActionResult Modificar(int id, VentaDTO obj)
         {
 
-            var modificar = _bd.Cliente.Find(id);
+            var modificar = _bd.Venta.Find(id);
 
             if (modificar == null)
                 return NoContent();
 
-            modificar.Nombre = obj.Nombre;
-            modificar.Telefono = obj.Telefono;
-            modificar.Correo = obj.Correo;
-            modificar.Direccion = obj.Direccion;
+            modificar.IdCliente = obj.IdCliente;
+            modificar.IdVideojuego = obj.IdVideojuego;
 
-            _bd.Cliente.Update(modificar);
+            _bd.Venta.Update(modificar);
             _bd.SaveChanges();
 
             return Ok(modificar);
@@ -76,12 +74,12 @@ namespace Videojuegos_Heladio.API.Controllers
         [Route("{id}")]
         public IActionResult Borrar(int id)
         {
-            var borrar = _bd.Cliente.Find(id);
+            var borrar = _bd.Venta.Find(id);
 
             if (borrar == null)
                 return NoContent();
 
-            _bd.Cliente.Remove(borrar);
+            _bd.Venta.Remove(borrar);
             _bd.SaveChanges();
             return Ok(borrar);
         }
