@@ -62,6 +62,7 @@ namespace Videojuegos_Heladio.API.Controllers
             if (modificar == null)
                 return NoContent();
 
+            modificar.Descripcion = obj.Descripcion;
             modificar.IdCliente = obj.IdCliente;
             modificar.IdVideojuego = obj.IdVideojuego;
 

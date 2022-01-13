@@ -19,6 +19,7 @@ namespace Videojuegos_Heladio.API.Modelos
 
         public Venta(VentaDTO nuevo)
         {
+            Descripcion = nuevo.Descripcion;
             Fecha = DateTime.Now;
             IdCliente = nuevo.IdCliente;
             IdVideojuego = nuevo.IdVideojuego;
@@ -28,6 +29,9 @@ namespace Videojuegos_Heladio.API.Modelos
 
         [Key]
         public int IdVenta { get; set; }
+
+        [Required]
+        public string Descripcion { get; set; }
 
         [Required]
         public DateTime Fecha { get; set; }

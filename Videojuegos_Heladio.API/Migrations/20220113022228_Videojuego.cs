@@ -65,6 +65,7 @@ namespace Videojuegos_Heladio.API.Migrations
                 {
                     IdVenta = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IdCliente = table.Column<int>(type: "int", nullable: false),
                     IdVideojuego = table.Column<int>(type: "int", nullable: false)

@@ -10,8 +10,8 @@ using Videojuegos_Heladio.API.Modelos;
 namespace Videojuegos_Heladio.API.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220112052824_Videojuego")]
-    partial class Videojuego
+    [Migration("20220113022255_Plataforma")]
+    partial class Plataforma
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -76,6 +76,10 @@ namespace Videojuegos_Heladio.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
