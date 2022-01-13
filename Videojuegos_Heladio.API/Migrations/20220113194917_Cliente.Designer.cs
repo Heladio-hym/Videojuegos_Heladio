@@ -10,8 +10,8 @@ using Videojuegos_Heladio.API.Modelos;
 namespace Videojuegos_Heladio.API.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220113022228_Videojuego")]
-    partial class Videojuego
+    [Migration("20220113194917_Cliente")]
+    partial class Cliente
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,7 +79,8 @@ namespace Videojuegos_Heladio.API.Migrations
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Videojuegos_Heladio.API.DTOS
 {
     public class VentaDTO
     {
+        [MaxLength(100)]
         public string Descripcion { get; set; }
 
         public int IdCliente { get; set; }

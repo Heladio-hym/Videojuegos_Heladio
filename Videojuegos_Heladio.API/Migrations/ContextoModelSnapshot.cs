@@ -77,7 +77,8 @@ namespace Videojuegos_Heladio.API.Migrations
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
